@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = "name") })
-public class SkillBean implements Nameable, MxBean<Long>, Presentable {
+public class SkillBean implements Nameable, MxBean<Long>, Presentable, Comparable<SkillBean> {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
@@ -57,5 +57,10 @@ public class SkillBean implements Nameable, MxBean<Long>, Presentable {
 
 	public void setPic(String pic) {
 		this.pic = pic;
+	}
+
+	@Override
+	public int compareTo(SkillBean skillBean) {
+		return this.name.compareTo(skillBean.name);
 	}
 }

@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.dvlcube.xpress</groupId>
 			<artifactId>dvl-core</artifactId>
-			<version>1.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<!-- spring boot -->
@@ -47,7 +47,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+<!--			<scope>provided</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,6 +65,14 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 	</dependencies>
+	<repositories>
+		<!--other repositories if any-->
+		<repository>
+			<id>project.core</id>
+			<name>core</name>
+			<url>file:${project.basedir}/dvl-core</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>

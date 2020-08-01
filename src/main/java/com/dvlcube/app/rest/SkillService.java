@@ -2,9 +2,7 @@ package com.dvlcube.app.rest;
 
 import static com.dvlcube.app.manager.data.e.Menu.CONFIGURATION;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import javax.validation.Valid;
 
@@ -39,7 +37,9 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	@Override
 	@GetMapping
 	public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
-		return repo.firstPage();
+		List<SkillBean> skillBeans = repo.firstPage();
+		Collections.sort(skillBeans);
+		return skillBeans;
 	}
 
 	@Override
@@ -79,8 +79,18 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	}
 
 	@GetMapping("/like")
-	public Iterable<SkillBean> getLike(@RequestParam(required = true) String id) {
-		return repo.findAllLike(id);
+	public Iterable<SkillBean> getLike(@RequestParam(required = true) String name) {
+		return repo.searchLikeByName(name);
+	}
+
+	@GetMapping("/name/{name}")
+	public Optional<SkillBean> getSkillByName(@PathVariable String name){
+		return repo.findByName(name);
+	}
+
+	@GetMapping("/exists/name/{name}")
+	public boolean getExistsName(@PathVariable String name){
+		return repo.existsByName(name);
 	}
 
 	@DeleteMapping("/{id}")
