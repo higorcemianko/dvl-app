@@ -12,8 +12,6 @@ public class ServerPortCustomizer implements WebServerFactoryCustomizer<Configur
     @Autowired
     private ApplicationConfig applicationConfig;
 
-    @Autowired
-    private Environment environment;
 
     @Override
     public void customize(ConfigurableWebServerFactory factory) {
