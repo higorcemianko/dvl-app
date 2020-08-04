@@ -29,7 +29,7 @@ public class JobService implements MxFilterableBeanService<JobBean, Long> {
 
     @Override
     @GetMapping("/{id}")
-    public Optional<JobBean> get(Long id) {
+    public Optional<JobBean> get(@PathVariable Long id) {
         return repo.findById(id);
     }
 

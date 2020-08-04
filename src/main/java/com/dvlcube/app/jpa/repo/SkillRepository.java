@@ -17,10 +17,10 @@ import java.util.Optional;
  */
 @Repository
 public interface SkillRepository extends DvlRepository<SkillBean, Long>, BasicRepository<SkillBean, Long> {
-    @Query(" SkillBean s WHERE s.name LIKE %:name%")
+    @Query("SELECT s FROM SkillBean s WHERE s.name LIKE %:name%")
     List<SkillBean> searchLikeByName(@Param("name") String name);
 
-    @Query("SkillBean s WHERE s.name LIKE %:name%")
+    @Query("SELECT s FROM SkillBean s WHERE s.name = :name")
     Optional<SkillBean> findByName(@Param("name") String name);
 
     @Query("select case when count(s) > 0 then true else false end from SkillBean s WHERE s.name = :name")

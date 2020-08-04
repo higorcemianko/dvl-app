@@ -37,7 +37,8 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	@Override
 	@GetMapping
 	public Iterable<SkillBean> get(@RequestParam Map<String, String> params) {
-		List<SkillBean> skillBeans = repo.firstPage();
+		List<SkillBean> skillBeans = new ArrayList<>();
+		repo.firstPage().forEach(skill -> skillBeans.add(skill));
 		Collections.sort(skillBeans);
 		return skillBeans;
 	}

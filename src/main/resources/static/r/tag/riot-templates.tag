@@ -89,7 +89,9 @@ this.state = {
     </div>
     <div class="footer-copyright">
         <div class="container">
-            dvl-core.it
+            dvl-core.it <br>
+            Higor Augusto Cemianko
+
         </div>
     </div>
 </footer>

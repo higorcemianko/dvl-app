@@ -31,7 +31,7 @@ public class DvlApplication {
 	public static void main(String[] args) {
 		ConfigUtils configUtils = new ConfigUtils();
 		SpringApplication app = new SpringApplication(DvlApplication.class);
-		app.setDefaultProperties(Collections.singletonMap("server.port", configUtils.getPort()));
+		//app.setDefaultProperties(Collections.singletonMap("server.port", configUtils.getPort()));
 		ConfigurableApplicationContext context = app.run(args);
 		int i = 1;
 		for (String name : context.getBeanDefinitionNames()) {
