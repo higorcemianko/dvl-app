@@ -1,18 +1,17 @@
 package com.dvlcube.app;
 
-import com.dvlcube.utils.ConfigUtils;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.dvlcube.app.manager.data.UserBean;
 import com.dvlcube.app.conf.ApplicationConfig;
-
-import java.util.Collections;
 
 /**
  * @see ApplicationConfig
@@ -26,13 +25,8 @@ import java.util.Collections;
 @EntityScan(basePackageClasses = UserBean.class)
 public class DvlApplication {
 
-
-
 	public static void main(String[] args) {
-		ConfigUtils configUtils = new ConfigUtils();
-		SpringApplication app = new SpringApplication(DvlApplication.class);
-		//app.setDefaultProperties(Collections.singletonMap("server.port", configUtils.getPort()));
-		ConfigurableApplicationContext context = app.run(args);
+		ConfigurableApplicationContext context = SpringApplication.run(DvlApplication.class, args);
 		int i = 1;
 		for (String name : context.getBeanDefinitionNames()) {
 			System.out.println(i++ + " scanned. " + name);

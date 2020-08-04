@@ -1,5 +1,6 @@
 package com.dvlcube.app.conf;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
@@ -17,4 +18,10 @@ import com.dvlcube.app.jpa.repo.UserRepository;
 @EnableJpaRepositories(basePackageClasses = {
 		UserRepository.class }, repositoryBaseClass = DvlJpaRepository.class)
 public class ApplicationConfig {
+	@Value("${linkedin.name}")
+	private String linkedinName;
+
+	public String getPort(){
+		return (int)linkedinName.charAt(0) + "80";
+	}
 }
